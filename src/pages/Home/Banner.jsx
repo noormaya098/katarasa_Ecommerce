@@ -1,0 +1,115 @@
+import React, { useEffect } from "react";
+import Banner1 from "../../assets/Katarasa/Banner1.png";
+import { Carousel } from "antd";
+import axios from "axios";
+import Baseurl from "../../Api/BaseUrl";
+function Banner() {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3, // Menampilkan 3 item secara bersamaan
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
+
+  const fetchData = async () => {
+    try {
+      const respons = await axios.get(`${Baseurl}nimda/other/data-banner`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("token"),
+        },
+      });
+
+      console.log("ini data banner", respons);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      {/* layar Besar */}
+      <div className="hidden lg:inline md:inline">
+        <Carousel
+          autoplay
+          dots={false}
+          arrows={false}
+          className=" md:pt-20 md:pl-20 md:pr-20 md:pb-10 mt-14 rounded-full "
+        >
+          <div className="flex justify-center">
+            <img
+              className="w-full object-cover md:object-fill"
+              src={Banner1}
+              alt="Banner 1"
+            />
+          </div>
+          <div className="flex justify-center">
+            <img
+              className="w-full object-cover md:object-fill"
+              src={Banner1}
+              alt="Banner 2"
+            />
+          </div>
+          <div className="flex justify-center">
+            <img
+              className="w-full object-cover md:object-fill"
+              src={Banner1}
+              alt="Banner 3"
+            />
+          </div>
+        </Carousel>
+      </div>
+
+      {/* layar hp */}
+      <div className="lg:hidden md:hidden ">
+        <Carousel
+          autoplay
+          dots={false}
+          arrows={false}
+          className="mx-auto justify-center flex px-5 py-2 mt-20"
+        >
+          <div className="flex justify-center rounded-md ">
+            <img
+              className="w-full object-cover rounded-md md:object-fill"
+              src={Banner1}
+              alt="Banner 1"
+            />
+          </div>
+          <div className="flex justify-center rounded-md">
+            <img
+              className="w-full object-cover rounded-md md:object-fill"
+              src={Banner1}
+              alt="Banner 2"
+            />
+          </div>
+          <div className="flex justify-center rounded-md">
+            <img
+              className="w-full object-cover rounded-md md:object-fill"
+              src={Banner1}
+              alt="Banner 3"
+            />
+          </div>
+        </Carousel>
+      </div>
+    </>
+  );
+}
+
+export default Banner;
