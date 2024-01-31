@@ -10,6 +10,7 @@ import {
   SearchOutlined,
   EyeTwoTone,
   EyeInvisibleOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
@@ -23,53 +24,63 @@ function Navbar() {
   const [staticName, setStaticName] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const menu = (
-    <Menu className="w-36">
-      <br />
-      <Menu.Item key="menu">
-        <Link to="/menu" className=" px-8 py-1  ">
-          <span className="text-[#3B8F51] text-base ">Menu</span>
-        </Link>
-      </Menu.Item>
-      <br />
-      <Menu.Item key="promo">
-        <Link className=" px-8 py-1  ">
-          {" "}
-          <span className="text-[#3B8F51] text-base">Promo</span>
-        </Link>
-      </Menu.Item>
-      <br />
-      <Menu  className="flex justify-center">
-        <Menu.Item >
-          <Link>
-            <img src={keranjangIcon} alt="keranjang" className="w-7 h-6 ml-8" />
+    <>
+      <Menu className="w-36">
+        <br />
+        <Menu.Item key="menu">
+          <Link to="/menu" className=" px-8 py-1  ">
+            <span className="text-[#3B8F51] text-base">Menu</span>
           </Link>
         </Menu.Item>
-      </Menu>
-      <hr className="border border-[#3B8F51]"/>
-      <br />
-      <Menu.Item key="signup">
-        <Button // Buka modal login saat tombol ditekan
-          className="text-[#3B8F51] border border-[#3B8F51] rounded-full px-7 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-[#3B8F51] hover:border-none"
+        <br />
+        <Menu.Item key="promo">
+          <Link className=" px-8 py-1  ">
+            {" "}
+            <span className="text-[#3B8F51] text-base">Promo</span>
+          </Link>
+        </Menu.Item>
+        <br />
+        <Menu className="flex justify-center">
+          <Menu.Item>
+            <Link>
+              <img
+                src={keranjangIcon}
+                alt="keranjang"
+                className="w-7 h-6 ml-8"
+              />
+            </Link>
+          </Menu.Item>
+        </Menu>
+        <hr className="border border-[#3B8F51]" />
+        <br />
+        <Menu.Item
+          key="login"
+          style={{ display: "flex", justifyContent: "center" }}
         >
-          Sign In
-        </Button>
-      </Menu.Item>
-      <Menu.Item
-        key="login"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        {!isLoggedIn && (
-          <Button
-            onClick={() => setModalVisible(true)} // Buka modal login saat tombol ditekan
-            className="text-[#3B8F51] border border-[#3B8F51] rounded-full px-8 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-[#3B8F51] hover:border-none"
+          {!isLoggedIn && (
+            <Button
+              onClick={() => setModalVisible(true)} // Buka modal login saat tombol ditekan
+              className="text-white bg-[#3B8F51] border border-[#3B8F51] rounded-full px-8 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-white hover:border-[#3B8F51]"
+            >
+              Login
+            </Button>
+          )}
+        </Menu.Item>
+
+        <Menu.Item key="signup">
+          <Button // Buka modal login saat tombol ditekan
+            className="text-[#3B8F51] border border-[#3B8F51] rounded-full px-7 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-[#3B8F51] hover:border-none"
           >
-            Login
+            Sign In
           </Button>
-        )}
-      </Menu.Item>
-    </Menu>
+        </Menu.Item>
+
+        <br />
+      </Menu>
+    </>
   );
 
   const handleMenuClick = (e) => {
@@ -106,12 +117,51 @@ function Navbar() {
     }
   };
 
+  const showModal = () => {
+    setVisible(true);
+  };
+
+  // Fungsi untuk menyembunyikan modal
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
   return (
     <nav className=" w-full shadow-lg fixed top-0 z-10 mx-auto  bg-[#41644A] fixe  md:pb-5 md:pt-5 flex justify-center items-center  ">
       <div className="flex items-center  mx-auto ">
-        <div className="md:hidden mr-12">
-          <img src={SearchIcon} alt="order" className="w-[30px] h-[30px]" />
-        </div>
+        {/* Search Layar HP */}
+        <>
+          <div className="md:hidden mr-12">
+            <img
+              src={SearchIcon}
+              alt="order"
+              className="w-[30px] h-[30px]"
+              onClick={showModal} // Panggil showModal saat gambar diklik
+            />
+
+            <Modal
+              title={
+                <span className="text-[#3B8F51]">Cari menu favorite-mu! </span>
+              }
+              closeIcon={<CloseOutlined style={{ color: "#3B8F51" }} />}
+              visible={visible} // State untuk mengontrol keterlihatan modal
+              onCancel={handleCancel} // Panggil handleCancel saat modal ditutup
+              footer={null} // Tidak menampilkan footer
+            >
+              <Input
+                placeholder="Cari disini"
+                className="border border-[#3B8F51] rounded-full mt-4"
+              />
+              <Link to="/pencarian">
+                {" "}
+                <Button className="mt-5 w-full text-white bg-[#3B8F51] border border-[#3B8F51] rounded-full px-8 py-1  transition-colors duration-300 ease-in-out hover:bg-white hover:border-[#3B8F51]">
+                  Search
+                </Button>
+              </Link>
+            </Modal>
+          </div>
+        </>
+
         <div className="mr-20 ">
           {/* Logo */}
           <img
@@ -120,6 +170,7 @@ function Navbar() {
             className=" h-[59px]  w-[163px] "
           />
         </div>
+
         {/* Tampilkan tab pada layar besar */}
         <div className="hidden md:flex md:space-x-5">
           <a
@@ -157,6 +208,8 @@ function Navbar() {
             {/* </Link> */}
           </div>
           <div className="text-white font-bold">|</div>
+          {/* Tambahkan kondisional untuk menampilkan tombol "Login" */}
+
           <>
             {isLoggedIn ? (
               // Dropdown ketika sudah login
@@ -197,7 +250,7 @@ function Navbar() {
                           Akun
                         </li>
                         <li className="py-2 px-4 hover:bg-gray-100 cursor-pointer">
-                          <Link to="/history">History</Link>
+                          <Link to="/history">History Pesanan</Link>
                         </li>
                         <li className="py-2 px-4 hover:bg-gray-100 cursor-pointer">
                           Pengaturan
@@ -217,11 +270,10 @@ function Navbar() {
               </a>
             )}
 
-            {/* Tambahkan kondisional untuk menampilkan tombol "Login" */}
             {!isLoggedIn && (
               <Button
                 onClick={() => setModalVisible(true)} // Buka modal login saat tombol ditekan
-                className="text-white border border-white rounded-full px-3 py-1 transition-colors duration-300 ease-in-out hover:bg-[#3B8F51] hover:border-none"
+                className="text-white border border-white bg-[#3B8F51] rounded-full px-5 py-1 transition-colors duration-300 ease-in-out hover:bg-white hover:border-none"
               >
                 Login
               </Button>
@@ -303,27 +355,45 @@ function Navbar() {
             </Modal>
           </>
         </div>
+
         {/* Hanya tampilkan hamburger icon saat layar kecil */}
-        <div className="md:hidden absolute top-0 right-0 mt-4 mr-4 ">
+        <div className="md:hidden absolute top-0 right-0 mt-4 mr-4">
           <Dropdown overlay={menu} trigger={["click"]} visible={isMenuOpen}>
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#ffffff"
-                strokeWidth="2"
-                strokeLinecap="round"
-                F
-                strokeLinejoin="round"
-                className="lucide lucide-align-justify"
-              >
-                <line x1="3" y1="6" x2="21" y2="6" />
-                <line x1="3" y1="12" x2="21" y2="12" />
-                <line x1="3" y1="18" x2="21" y2="18" />
-              </svg>
+              {isMenuOpen ? ( // Mengganti ikon berdasarkan keadaan dropdown terbuka atau tertutup
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-x" // Ganti kelas ikon close jika diperlukan
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-align-justify"
+                >
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+              )}
             </button>
           </Dropdown>
         </div>

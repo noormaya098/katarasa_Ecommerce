@@ -28,7 +28,7 @@ function OurPartner() {
     },
   ];
   return (
-    <div className="text-black mx-auto justify-center flex px-6 sm:px-10 py-2 mt-10">
+    <div className="text-black mx-auto justify-center flex px-32 lg:px-20 sm:px-32 py-2 mt-10 ">
       <div className="w-full">
         <div className="ml-2 text-center mb-5">
           <p className="text-2xl sm:text-3xl font-medium text-green-600">

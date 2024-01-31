@@ -119,7 +119,8 @@ const BestSeller = () => {
     <div>
       {/* Layar Besar */}
       <>
-        <div className="2xl:container 2xl:mx-auto 2xl:px-0 py-0 px-14 hidden lg:inline md:inline">
+        <div className="hidden md:inline lg:inline">
+        <div className="text-black  mx-auto justify-center flex px-5 md:px-20 py-2 mt-5">
           <div className="carousel mx-auto">
             {/* <h2 className="text-4xl leading-8 font-semibold mb-12 text-slate-700">
           Our epic carousel
@@ -265,6 +266,7 @@ const BestSeller = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </>
 

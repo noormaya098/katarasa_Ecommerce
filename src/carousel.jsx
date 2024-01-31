@@ -122,10 +122,11 @@ const Carousel = () => {
     <div>
       {/* Layar Besar */}
       <>
-        <div className="2xl:container 2xl:mx-auto 2xl:px-0 py-0 px-14">
+      <div className="hidden md:inline lg:inline ">
+
+        <div className=" text-black mx-auto justify-center flex px-10 md:px-20 py-2 mt-5">
           <div className="hidden lg:inline md:inline">
             <div className="carousel mx-auto">
-             
               <div className="relative overflow-hidden">
                 <div className="flex justify-between absolute top left w-full h-full">
                   <button
@@ -273,6 +274,7 @@ const Carousel = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </>
 

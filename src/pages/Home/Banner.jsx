@@ -46,12 +46,12 @@ function Banner() {
   return (
     <>
       {/* layar Besar */}
-      <div className="hidden lg:inline md:inline">
+      <div className="hidden lg:inline md:inline text-black mx-auto justify-center  px-5 md:px-20 py-2 mt-5">
         <Carousel
           autoplay
           dots={false}
           arrows={false}
-          className=" md:pt-20 md:pl-20 md:pr-20 md:pb-10 mt-14 rounded-full "
+          className=" md:pt-20 md:pl-20 md:pr-20 md:pb-10 mt-14 rounded-full  "
         >
           <div className="flex justify-center">
             <img
@@ -75,6 +75,7 @@ function Banner() {
             />
           </div>
         </Carousel>
+        
       </div>
 
       {/* layar hp */}
