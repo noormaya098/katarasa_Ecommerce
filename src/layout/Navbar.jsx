@@ -4,6 +4,7 @@ import IconOrder from "../assets/Katarasa/IconOrder.png";
 import IconGoogle from "../assets/logo/Google.png";
 import IconElogs from "../assets/logo/Elogs.png";
 import SearchIcon from "../assets/Search.png";
+import keranjangIcon from "../assets/Keranjang.png";
 import { Button, Dropdown, Input, Menu, Modal } from "antd";
 import {
   SearchOutlined,
@@ -21,29 +22,51 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [staticName, setStaticName] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const menu = (
-    <Menu className="w-36" >
+    <Menu className="w-36">
+      <br />
       <Menu.Item key="menu">
-        <Link to="/menu" className=" px-8 py-1  ">Menu</Link>
+        <Link to="/menu" className=" px-8 py-1  ">
+          <span className="text-[#3B8F51] text-base ">Menu</span>
+        </Link>
       </Menu.Item>
+      <br />
       <Menu.Item key="promo">
-        <Link  className=" px-8 py-1  ">Promo</Link>
+        <Link className=" px-8 py-1  ">
+          {" "}
+          <span className="text-[#3B8F51] text-base">Promo</span>
+        </Link>
       </Menu.Item>
+      <br />
+      <Menu  className="flex justify-center">
+        <Menu.Item >
+          <Link>
+            <img src={keranjangIcon} alt="keranjang" className="w-7 h-6 ml-8" />
+          </Link>
+        </Menu.Item>
+      </Menu>
+      <hr className="border border-[#3B8F51]"/>
+      <br />
       <Menu.Item key="signup">
-        <Link className=" px-8 py-1  " href="#signup">Sign In</Link>
+        <Button // Buka modal login saat tombol ditekan
+          className="text-[#3B8F51] border border-[#3B8F51] rounded-full px-7 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-[#3B8F51] hover:border-none"
+        >
+          Sign In
+        </Button>
       </Menu.Item>
       <Menu.Item
         key="login"
         style={{ display: "flex", justifyContent: "center" }}
       >
         {!isLoggedIn && (
-          <div
+          <Button
             onClick={() => setModalVisible(true)} // Buka modal login saat tombol ditekan
-            className="text-black px-8 py-1"
+            className="text-[#3B8F51] border border-[#3B8F51] rounded-full px-8 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-[#3B8F51] hover:border-none"
           >
             Login
-          </div>
+          </Button>
         )}
       </Menu.Item>
     </Menu>
