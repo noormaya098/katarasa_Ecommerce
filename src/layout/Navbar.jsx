@@ -15,73 +15,85 @@ import {
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const [modalVisible, setModalVisible] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisibleSignIn, setPasswordVisibleSignIn] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [staticName, setStaticName] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [visible, setVisible] = useState(false);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [visibleSignIn, setVisibleSignIn] = useState(false);
+
   const menu = (
-    <>
-      <Menu className="w-36">
-        <br />
-        <Menu.Item key="menu">
-          <Link to="/menu" className=" px-8 py-1  ">
-            <span className="text-[#3B8F51] text-base">Menu</span>
+    <Menu className="w-36">
+      <br />
+      <Menu.Item key="menu">
+        <Link to="/menu" className=" px-8 py-1  ">
+          <span className="text-[#3B8F51] text-base">Menu</span>
+        </Link>
+      </Menu.Item>
+      <br />
+      <Menu.Item key="promo">
+        <Link className=" px-8 py-1  ">
+          {" "}
+          <span className="text-[#3B8F51] text-base">Promo</span>
+        </Link>
+      </Menu.Item>
+      <br />
+      <Menu className="flex justify-center">
+        <Menu.Item>
+          <Link>
+            <img src={keranjangIcon} alt="keranjang" className="w-7 h-6 ml-8" />
           </Link>
         </Menu.Item>
-        <br />
-        <Menu.Item key="promo">
-          <Link className=" px-8 py-1  ">
-            {" "}
-            <span className="text-[#3B8F51] text-base">Promo</span>
-          </Link>
-        </Menu.Item>
-        <br />
-        <Menu className="flex justify-center">
-          <Menu.Item>
-            <Link>
-              <img
-                src={keranjangIcon}
-                alt="keranjang"
-                className="w-7 h-6 ml-8"
-              />
-            </Link>
-          </Menu.Item>
-        </Menu>
-        <hr className="border border-[#3B8F51]" />
-        <br />
-        <Menu.Item
-          key="login"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          {!isLoggedIn && (
-            <Button
-              onClick={() => setModalVisible(true)} // Buka modal login saat tombol ditekan
-              className="text-white bg-[#3B8F51] border border-[#3B8F51] rounded-full px-8 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-white hover:border-[#3B8F51]"
-            >
-              Login
-            </Button>
-          )}
-        </Menu.Item>
-
-        <Menu.Item key="signup">
-          <Button // Buka modal login saat tombol ditekan
-            className="text-[#3B8F51] border border-[#3B8F51] rounded-full px-7 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-[#3B8F51] hover:border-none"
-          >
-            Sign In
-          </Button>
-        </Menu.Item>
-
-        <br />
       </Menu>
-    </>
+      <hr className="border border-[#3B8F51]" />
+      <br />
+
+      <Menu.Item>
+        <Button
+          onClick={() => {
+            handleLoginOrSignIn();
+            setModalVisible(true);
+          }}
+          className="text-white bg-[#3B8F51] border border-[#3B8F51] rounded-full px-8 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-white hover:border-[#3B8F51]"
+        >
+          Login
+        </Button>
+      </Menu.Item>
+      <Menu.Item>
+        <Button
+          onClick={() => {
+            handleLoginOrSignIn();
+            setVisibleSignIn(true);
+          }}
+          className="text-[#3B8F51] border border-[#3B8F51] rounded-full px-7 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-[#3B8F51] hover:border-none"
+        >
+          Sign In
+        </Button>
+      </Menu.Item>
+
+      <br />
+    </Menu>
   );
+
+  const showModalSignIn = () => {
+    setVisibleSignIn(true);
+  };
+
+  const handleCancelSignIn = () => {
+    setVisibleSignIn(false);
+  };
+
+  const handleSignIn = () => {
+    // Handle sign in logic here
+    setVisibleSignIn(false);
+  };
 
   const handleMenuClick = (e) => {
     if (e.key === "menu") {
@@ -99,6 +111,9 @@ function Navbar() {
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
+  };
+  const togglePasswordVisibilitySignIn = () => {
+    setPasswordVisibleSignIn(!setPasswordVisibleSignIn);
   };
 
   const handleLogin = () => {
@@ -124,6 +139,22 @@ function Navbar() {
   // Fungsi untuk menyembunyikan modal
   const handleCancel = () => {
     setVisible(false);
+  };
+
+  const handleLoginOrSignIn = () => {
+    // Logika untuk tindakan login atau sign in di sini
+    // Setelah login atau sign in berhasil, tutup dropdown dengan menetapkan isMenuOpen ke false
+    setIsMenuOpen(false);
+  };
+
+  const handleSignInClick = () => {
+    setModalVisible(false);
+    setVisibleSignIn(true);
+  };
+
+  const handleSignUpClick = () => {
+    setVisibleSignIn(false);
+    setModalVisible(true);
   };
 
   return (
@@ -207,152 +238,24 @@ function Navbar() {
             <img src={IconOrder} alt="order" className="w-[30px] h-[30px]" />
             {/* </Link> */}
           </div>
+
           <div className="text-white font-bold">|</div>
           {/* Tambahkan kondisional untuk menampilkan tombol "Login" */}
-
           <>
-            {isLoggedIn ? (
-              // Dropdown ketika sudah login
-              <>
-                <div>
-                  <div
-                    onClick={() => setShowDropdown(!showDropdown)} // Mengatur visibilitas dropdown menu saat nama pengguna diklik
-                    className="flex items-center cursor-pointer"
-                  >
-                    <img
-                      className="rounded-full w-5 h-5"
-                      src={LogoKatarasa}
-                      alt="Avatar"
-                    />
-                    <span className="mr-2 ml-5">{staticName}</span>{" "}
-                    {/* Menampilkan nama pengguna setelah login */}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className={`h-4 w-4 ${
-                        showDropdown ? "transform rotate-180" : ""
-                      }`} // Menyesuaikan rotasi ikon panah
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 9l-7 7-7-7"
-                      />
-                    </svg>
-                  </div>
-                  {showDropdown && ( // Menampilkan dropdown menu jika showDropdown true
-                    <div className="absolute bg-white border rounded-md mt-2">
-                      <ul>
-                        <li className="py-2 px-4 hover:bg-gray-100 cursor-pointer">
-                          Akun
-                        </li>
-                        <li className="py-2 px-4 hover:bg-gray-100 cursor-pointer">
-                          <Link to="/history">History Pesanan</Link>
-                        </li>
-                        <li className="py-2 px-4 hover:bg-gray-100 cursor-pointer">
-                          Pengaturan
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              </>
-            ) : (
-              <a
-                href="#signin"
-                onClick={() => setModalVisible(true)} // Buka modal login saat tombol ditekan
-                className="text-white border border-white rounded-full px-3 py-1 transition-colors duration-300 ease-in-out hover:bg-[#3B8F51] hover:border-none"
+            <Button
+              onClick={() => setModalVisible(true)}
+              className="text-white border border-white bg-[#3B8F51] rounded-full px-5 py-1 transition-colors duration-300 ease-in-out hover:bg-white hover:border-none"
+            >
+              Login
+            </Button>
+            <>
+              <Button
+                className="text-[#3B8F51] bg-white border border-[#3B8F51] rounded-full px-7 py-1 ml-2 transition-colors duration-300 ease-in-out hover:bg-[#3B8F51] hover:border-none"
+                onClick={showModalSignIn}
               >
                 Sign In
-              </a>
-            )}
-
-            {!isLoggedIn && (
-              <Button
-                onClick={() => setModalVisible(true)} // Buka modal login saat tombol ditekan
-                className="text-white border border-white bg-[#3B8F51] rounded-full px-5 py-1 transition-colors duration-300 ease-in-out hover:bg-white hover:border-none"
-              >
-                Login
               </Button>
-            )}
-
-            <Modal
-              width={600}
-              visible={modalVisible}
-              onCancel={() => {
-                setModalVisible(false);
-                setEmail(""); // Reset email setelah modal ditutup
-                setPassword(""); // Reset password setelah modal ditutup
-              }}
-              footer={null}
-              title={
-                <span
-                  style={{ color: "#3B8F51" }}
-                  className="font-semibold text-3xl"
-                >
-                  Masuk
-                </span>
-              }
-            >
-              <div className="mx-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
-                <div className="mt-10">
-                  <label className=" font-medium text-xl">Email</label>
-                  <Input
-                    className="mt-3 border-none rounded-none"
-                    placeholder="Masukkan Email Anda"
-                    style={{ backgroundColor: "#E1DFDF" }}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                <div className="mt-5">
-                  <label className="font-medium text-xl">Password</label>
-                  <Input.Password
-                    className="mt-3 border-none rounded-none"
-                    placeholder="Masukkan Password Anda"
-                    iconRender={(visible) =>
-                      visible ? (
-                        <EyeTwoTone onClick={togglePasswordVisibility} />
-                      ) : (
-                        <EyeInvisibleOutlined
-                          onClick={togglePasswordVisibility}
-                        />
-                      )
-                    }
-                    type={passwordVisible ? "text" : "password"}
-                    bordered={false}
-                    style={{ backgroundColor: "#E1DFDF" }}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-                <Button
-                  className="mt-5 justify-center w-full rounded-full bg-[#3B8F51] text-white hover:bg-transparent hover:border-green-500 hover:text-green-500"
-                  onClick={handleLogin}
-                >
-                  Login
-                </Button>
-
-                <p className="text-end mt-5 text-[#3B8F51] font-medium text-sm cursor-pointer">
-                  lupa password ?
-                </p>
-                <br />
-                <br />
-                <br />
-
-                <hr className="border-1 border-solid border-[#3B8F51]" />
-                <br />
-                <br />
-
-                <Button className="mt-5 justify-center w-full rounded-full border-solid border-black flex items-center">
-                  Login Via Google
-                </Button>
-                <Button className="mt-5 justify-center w-full rounded-full border-solid border-black flex items-center">
-                  Eureka Log In
-                </Button>
-              </div>
-            </Modal>
+            </>
           </>
         </div>
 
@@ -360,7 +263,7 @@ function Navbar() {
         <div className="md:hidden absolute top-0 right-0 mt-4 mr-4">
           <Dropdown overlay={menu} trigger={["click"]} visible={isMenuOpen}>
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? ( // Mengganti ikon berdasarkan keadaan dropdown terbuka atau tertutup
+              {isMenuOpen ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -371,7 +274,7 @@ function Navbar() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="lucide lucide-x" // Ganti kelas ikon close jika diperlukan
+                  className="lucide lucide-x"
                 >
                   <line x1="18" y1="6" x2="6" y2="18" />
                   <line x1="6" y1="6" x2="18" y2="18" />
@@ -397,6 +300,184 @@ function Navbar() {
             </button>
           </Dropdown>
         </div>
+
+        {/* Modal Login */}
+        <>
+          <Modal
+            width={600}
+            visible={modalVisible}
+            onCancel={() => {
+              setModalVisible(false);
+              setEmail(""); // Reset email setelah modal ditutup
+              setPassword(""); // Reset password setelah modal ditutup
+            }}
+            footer={null}
+            title={
+              <span
+                style={{ color: "#3B8F51" }}
+                className="font-semibold md:text-2xl text-lg "
+              >
+                Masuk
+              </span>
+            }
+          >
+            <div className="mx-auto max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
+              <div className="md:mt-10 mt-5">
+                <label className=" font-medium md:text-xl">Email</label>
+                <Input
+                  className="mt-3 border-none rounded-full"
+                  placeholder="Masukkan Email Anda"
+                  style={{ backgroundColor: "#E1DFDF" }}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="mt-5">
+                <label className="font-medium md:text-xl">Password</label>
+                <Input.Password
+                  className="mt-3 border-none rounded-full"
+                  placeholder="Masukkan Password Anda"
+                  iconRender={(visible) =>
+                    visible ? (
+                      <EyeTwoTone onClick={togglePasswordVisibility} />
+                    ) : (
+                      <EyeInvisibleOutlined
+                        onClick={togglePasswordVisibility}
+                      />
+                    )
+                  }
+                  type={passwordVisible ? "text" : "password"}
+                  bordered={false}
+                  style={{ backgroundColor: "#E1DFDF" }}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <Button
+                className="mt-5 justify-center w-full rounded-full bg-[#3B8F51] text-white hover:bg-transparent hover:border-green-500 hover:text-green-500"
+                onClick={handleLogin}
+              >
+                Login
+              </Button>
+
+              <p className="text-end mt-5 text-[#3B8F51] font-medium text-sm cursor-pointer md:mb-5">
+                lupa password ?
+              </p>
+
+              <br />
+              <hr className="border-1 border-solid border-[#3B8F51] " />
+              <br />
+
+              <div>
+                <div className="justify-center items-center w-full flex">
+                  Belum punya akun?{" "}
+                  <span
+                    className="ml-2 text-[#3B8F51] cursor-pointer"
+                    onClick={() => {
+                      setVisibleSignIn(true);
+                      setModalVisible(false);
+                    }}
+                  >
+                    SignIn
+                  </span>
+                </div>
+                <Button className="mt-5 justify-center w-full rounded-full border-solid border-black flex items-center">
+                  <span>
+                    <img src={IconGoogle} alt="" className="w-5 h-5 mr-5" />
+                  </span>{" "}
+                  Login Via Google
+                </Button>
+                <Button className="mt-5 justify-center w-full rounded-full border-solid border-black flex items-center">
+                  <span>
+                    <img src={IconElogs} alt="" className="w-5 h-5 mr-5" />
+                  </span>{" "}
+                  Eureka Log In
+                </Button>
+              </div>
+            </div>
+          </Modal>
+        </>
+
+        {/* Modal Sign In */}
+        <>
+          <Modal
+            title={
+              <span
+                style={{ color: "#3B8F51" }}
+                className="font-semibold sm:text-lg md:text-2xl"
+              >
+                Daftar
+              </span>
+            }
+            visible={visibleSignIn}
+            onCancel={handleCancelSignIn}
+            footer={null}
+          >
+            <div className="md:mt-10 mt-5">
+              <label className=" font-medium md:text-xl">Email / Nomor </label>
+              <Input
+                className="mt-3 border-none rounded-full"
+                placeholder="Masukkan Email / Nomor Anda"
+                style={{ backgroundColor: "#E1DFDF" }}
+              />
+            </div>
+            <div className="mt-5">
+              <label className="font-medium md:text-xl">Password</label>
+              <Input.Password
+                className="mt-3 border-none rounded-full"
+                placeholder="Masukkan Password Anda"
+                iconRender={(visible) =>
+                  visible ? (
+                    <EyeTwoTone onClick={togglePasswordVisibilitySignIn} />
+                  ) : (
+                    <EyeInvisibleOutlined
+                      onClick={togglePasswordVisibilitySignIn}
+                    />
+                  )
+                }
+                type={passwordVisibleSignIn ? "text" : "password"}
+                bordered={false}
+                style={{ backgroundColor: "#E1DFDF" }}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <Button
+              className="mt-6 mb-8 justify-center w-full rounded-full bg-[#3B8F51] text-white hover:bg-transparent hover:border-green-500 hover:text-green-500"
+              onClick={handleLogin}
+            >
+              Daftar
+            </Button>
+
+            <br />
+            <hr className="border-1 border-solid border-[#3B8F51] " />
+            <br />
+
+            <div>
+              <div className="justify-center items-center w-full flex">
+                Sudah punya akun?{" "}
+                <span
+                  className="ml-2 text-[#3B8F51] cursor-pointer"
+                  onClick={() => {
+                    setVisibleSignIn(false);
+                    setModalVisible(true);
+                  }}
+                >
+                  Login
+                </span>
+              </div>
+              <Button className="mt-5 justify-center w-full rounded-full border-solid border-black flex items-center">
+                <span>
+                  <img src={IconGoogle} alt="" className="w-5 h-5 mr-5" />
+                </span>{" "}
+                Login Via Google
+              </Button>
+              <Button className="mt-5 justify-center w-full rounded-full border-solid border-black flex items-center">
+                <span>
+                  <img src={IconElogs} alt="" className="w-5 h-5 mr-5" />
+                </span>{" "}
+                Eureka Log In
+              </Button>
+            </div>
+          </Modal>
+        </>
       </div>
     </nav>
   );

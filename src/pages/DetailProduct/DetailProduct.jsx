@@ -640,41 +640,43 @@ function DetailProduct() {
                     </div>
                   </div>
                 </>
-                <>
-                  <div className="w-full flex justify-between items-center mt-4">
-                    <p className="text-black">Jumlah</p>
-                    <div className="w-1/2 flex items-center">
-                      <button
-                        onClick={kurangiJumlah}
-                        className={`px-3 py-1 rounded-full mr-2 ${
-                          kurangiClicked
-                            ? "bg-[#3B8F51] text-white"
-                            : "bg-gray-300"
-                        }`}
-                      >
-                        -
-                      </button>
-                      <p className="text-black">{jumlah}</p>
-                      <button
-                        onClick={tambahJumlah}
-                        className={`px-3 py-1 rounded-full ml-2 ${
-                          tambahClicked
-                            ? "bg-[#3B8F51] text-white"
-                            : "bg-gray-300"
-                        }`}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                  <div className="flex justify-center mt-4">
-                    <button className="px-4 py-2 bg-[#3B8F51] text-white rounded-full w-full">
-                      <Link to="/tambahkeranjang">Tambah Keranjang</Link>
-                    </button>
-                  </div>
-                </>
+                {/* Jumlah */}
               </div>
             </div>
+            <>
+              <div className="flex mt-10 w-full">
+                <div className="w-1/3  flex justify-center items-center">
+                  {" "}
+                  <p className="text-black font-semibold">Jumlah</p>
+                </div>
+                <div className="w-1/2  flex justify-center items-center">
+                  {" "}
+                  <button
+                    onClick={kurangiJumlah}
+                    className={`px-3 py-1 rounded-full mr-2 ${
+                      kurangiClicked ? "bg-[#3B8F51] text-white" : "bg-gray-300"
+                    }`}
+                  >
+                    -
+                  </button>
+                  <p className="text-black">{jumlah}</p>
+                  <button
+                    onClick={tambahJumlah}
+                    className={`px-3 py-1 rounded-full ml-2 ${
+                      tambahClicked ? "bg-[#3B8F51] text-white" : "bg-gray-300"
+                    }`}
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="w-1/2 ">
+                  {" "}
+                  <button className="px-4 py-2 bg-[#3B8F51] text-white rounded-full w-full text-[10px]">
+                    <Link to="/tambahkeranjang">Tambah Keranjang</Link>
+                  </button>
+                </div>
+              </div>
+            </>
           </>
         </div>
       </>
