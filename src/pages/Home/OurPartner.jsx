@@ -30,9 +30,9 @@ function OurPartner() {
   return (
     <>
     <div>
-   <div className="hidden md:inline lg:inline">
+   <div className="hidden md:inline lg:inline ">
    <div className=" text-black mx-auto justify-center flex px-32 lg:px-20 sm:px-32 py-2 mt-10 ">
-      <div className="w-full">
+      <div className="w-[76rem] ">
         <div className="ml-2 text-center mb-5">
           <p className="text-2xl sm:text-3xl font-medium text-green-600">
             Our Brands

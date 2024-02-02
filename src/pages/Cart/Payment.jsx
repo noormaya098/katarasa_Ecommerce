@@ -97,13 +97,14 @@ function Payment() {
     totalPrice + parseFloat(grabInstantDeliveryCost.replace(".", ""));
 
   return (
-    <div>
+    <div className=" w-screen h-screen">
       <Navbar />
 
       {/* Layar Besar */}
       <>
-        <div className="hidden md:inline lg:inline">
-          <div className="mx-auto justify-center flex flex-col-reverse sm:flex-row px-4 sm:px-8 md:px-16 py-2 mt-32 sm:mt-20 lg:mt-16 p-4 text-black space-x-7">
+       <div>
+       <div className="hidden md:inline lg:inline">
+          <div className="flex flex-col md:flex-row md:justify-between h-auto w-screen md:p-20 space-x-5  mx-auto sm:w-[85rem]">
             <div className="sm:w-2/3 mt-14 text-black">
               <div className="mt-5">
                 <h1 className="text-xl font-medium">Alamat Anda</h1>
@@ -113,7 +114,7 @@ function Payment() {
                     Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta
                     <p className="mt-2">Kode Pos: 13750</p>
                   </div>
-                  <div className="w-full sm:w-1/6 p-4 sm:p-2 flex justify-center items-center">
+                  <div className="w-full sm:w-1/6 p-4 sm:p-2 flex justify-end ">
                     <div className="rounded-full bg-[#e1eedd] md:w-10 md:h-10 sm:w-10 sm:h-10 px-3 py-1">
                       <EditOutlined className="mt-3 text-[#41644a] font-bold cursor-pointer" />
                     </div>
@@ -175,7 +176,7 @@ function Payment() {
               </div>
             </div>
 
-            <div className="lg:block sm:w-1/3 mt-16 md:w-1/3  shadow-xl">
+            <div className="lg:block sm:w-1/3 mt-16 md:w-1/3  shadow-xl ">
               <div className="bg-white rounded-lg shadow-md p-4 sticky top-0">
                 {/* Isi konten pencarian */}
                 {/* Dropdown select untuk filter */}
@@ -186,7 +187,7 @@ function Payment() {
                 {orderDetails.map((order, index) => (
                   <div className="flex justify-between mb-4" key={index}>
                     <div className="w-[230px]">
-                      <p className="truncate text-lg">{order.name}</p>
+                      <p className="truncate font-semibold text-lg">{order.name}</p>
                       <p className="text-gray-400">{order.quantity}</p>
                     </div>
                     <div className="w-1/4 text-[#3B8F51] text-end mt-5">
@@ -232,11 +233,13 @@ function Payment() {
             </div>
           </div>
         </div>
+       </div>
       </>
 
       {/* Layar HP */}
       <>
-        <div className="md:hidden lg:hidden mt-14 p-5 w-full mx-auto">
+       <div className="sm:inline lg:hidden md:hidden sm:w-screen w-screen mx-auto justify-start px-4 py-2 ">
+       <div className="mt-28">
           <h1 className="text-[#3B8F51] text-lg font-medium">Detail Order</h1>
           <br />
           <p className="text-black text-sm ">Alamat Anda</p>
@@ -350,6 +353,7 @@ function Payment() {
             </div>
           </div>
         </div>
+       </div>
       </>
 
       {/* Footer Layar HP */}

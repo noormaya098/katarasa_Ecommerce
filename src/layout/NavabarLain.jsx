@@ -14,7 +14,7 @@ import {
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function NavbarLain() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisibleSignIn, setPasswordVisibleSignIn] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,7 +34,7 @@ function Navbar() {
       <br />
       <Menu.Item key="menu">
         <Link to="/menu" className=" px-8 py-1  ">
-          <span className="text-[#3B8F51] text-base">Home</span>
+          <span className="text-[#3B8F51] text-base">Menu</span>
         </Link>
       </Menu.Item>
       <br />
@@ -158,11 +158,10 @@ function Navbar() {
   };
 
   return (
-    <div className="flex mx-auto bg-red-700 sm:w-full w-screen fixed z-[10]">
-      <nav className="  shadow-lg sm:w-full w-screen flex top-0 bg-[#41644A] pt-5 pb-5  justify-center items-center  ">
+    <div className="flex mx-auto bg-slate-500 w-full fixed z-[9999]">
+      <nav className="  shadow-lg w-full  flex top-0 bg-[#41644A]   md:pb-5 md:pt-5  justify-center items-center  ">
         <div className="flex items-center ">
           {/* Search Layar HP */}
-
           <>
             <div className="md:hidden mr-12">
               <img
@@ -196,8 +195,8 @@ function Navbar() {
               </Modal>
             </div>
           </>
-          <div className="mr-14 ">
-            
+
+          <div className="mr-6 ">
             {/* Logo */}
             <Link to="/home">
               {" "}
@@ -215,7 +214,7 @@ function Navbar() {
               className="text-white hover:text-white rounded-full px-4 py-2  hover:bg-[#3B8F51] hover:border-none"
               style={{ fontFamily: "Special Elite, sans-serif" }}
             >
-              <Link to="/menu">Home</Link>
+              <Link to="/menu">Menu</Link>
             </a>
             <a
               href="#promo"
@@ -277,7 +276,7 @@ function Navbar() {
           </div>
 
           {/* Hanya tampilkan hamburger icon saat layar kecil */}
-          <div className="md:hidden absolute top-0 right-0 mt-9 mr-5">
+          <div className="md:hidden absolute top-0 right-0 mt-4 mr-4">
             <Dropdown overlay={menu} trigger={["click"]} visible={isMenuOpen}>
               <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen ? (
@@ -342,7 +341,7 @@ function Navbar() {
                 <div className="md:mt-10 mt-5">
                   <label className=" font-medium md:text-xl">Email</label>
                   <Input
-                    className="mt-3 border-none rounded-[10px] p-3"
+                    className="mt-3 border-none rounded-full"
                     placeholder="Masukkan Email Anda"
                     style={{ backgroundColor: "#E1DFDF" }}
                     onChange={(e) => setEmail(e.target.value)}
@@ -351,7 +350,7 @@ function Navbar() {
                 <div className="mt-5">
                   <label className="font-medium md:text-xl">Password</label>
                   <Input.Password
-                    className="mt-3 border-none rounded-[10px] p-3 "
+                    className="mt-3 border-none rounded-full"
                     placeholder="Masukkan Password Anda"
                     iconRender={(visible) =>
                       visible ? (
@@ -369,7 +368,7 @@ function Navbar() {
                   />
                 </div>
                 <Button
-                  className="mt-5 justify-center w-full h-[50px] rounded-full bg-[#3B8F51] text-white hover:bg-transparent hover:border-green-500 hover:text-green-500"
+                  className="mt-5 justify-center w-full rounded-full bg-[#3B8F51] text-white hover:bg-transparent hover:border-green-500 hover:text-green-500"
                   onClick={handleLogin}
                 >
                   Login
@@ -396,13 +395,13 @@ function Navbar() {
                       SignIn
                     </span>
                   </div>
-                  <Button className="mt-5 justify-center w-full h-[50px] rounded-full border-solid border-black flex items-center">
+                  <Button className="mt-5 justify-center w-full rounded-full border-solid border-black flex items-center">
                     <span>
                       <img src={IconGoogle} alt="" className="w-5 h-5 mr-5" />
                     </span>{" "}
                     Login Via Google
                   </Button>
-                  <Button className="mt-5 justify-center w-full h-[50px] rounded-full border-solid border-black flex items-center">
+                  <Button className="mt-5 justify-center w-full rounded-full border-solid border-black flex items-center">
                     <span>
                       <img src={IconElogs} alt="" className="w-5 h-5 mr-5" />
                     </span>{" "}
@@ -433,7 +432,7 @@ function Navbar() {
                   Email / Nomor{" "}
                 </label>
                 <Input
-                  className="mt-3 border-none rounded-[10px] p-3"
+                  className="mt-3 border-none rounded-full"
                   placeholder="Masukkan Email / Nomor Anda"
                   style={{ backgroundColor: "#E1DFDF" }}
                 />
@@ -441,7 +440,7 @@ function Navbar() {
               <div className="mt-5">
                 <label className="font-medium md:text-xl">Password</label>
                 <Input.Password
-                  className="mt-3 border-none rounded-[10px] p-3"
+                  className="mt-3 border-none rounded-full"
                   placeholder="Masukkan Password Anda"
                   iconRender={(visible) =>
                     visible ? (
@@ -459,7 +458,7 @@ function Navbar() {
                 />
               </div>
               <Button
-                className="mt-6 mb-8 justify-center w-full h-[50px] rounded-full bg-[#3B8F51] text-white hover:bg-transparent hover:border-green-500 hover:text-green-500"
+                className="mt-6 mb-8 justify-center w-full rounded-full bg-[#3B8F51] text-white hover:bg-transparent hover:border-green-500 hover:text-green-500"
                 onClick={handleLogin}
               >
                 Daftar
@@ -482,13 +481,13 @@ function Navbar() {
                     Login
                   </span>
                 </div>
-                <Button className="mt-5 justify-center w-full h-[50px] rounded-full border-solid border-black flex items-center">
+                <Button className="mt-5 justify-center w-full rounded-full border-solid border-black flex items-center">
                   <span>
                     <img src={IconGoogle} alt="" className="w-5 h-5 mr-5" />
                   </span>{" "}
                   Login Via Google
                 </Button>
-                <Button className="mt-5 justify-center w-full h-[50px] rounded-full border-solid border-black flex items-center">
+                <Button className="mt-5 justify-center w-full rounded-full border-solid border-black flex items-center">
                   <span>
                     <img src={IconElogs} alt="" className="w-5 h-5 mr-5" />
                   </span>{" "}
@@ -503,4 +502,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavbarLain;

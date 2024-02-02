@@ -127,7 +127,7 @@ function ChocolateSection() {
                       {products.map((product, index) => (
                         <div
                           key={index}
-                          className="shadow-2xl md:w-[200px] md:h-[299px] mt-2 bg-white rounded-lg"
+                          className="shadow-2xl md:w-[200px] md:h-[290px] mt-2 bg-white rounded-lg"
                         >
                           <img
                             className="rounded-md"
@@ -135,7 +135,7 @@ function ChocolateSection() {
                             alt={`Product ${index}`}
                           />
                           <div className="ml-2">
-                            <p className="font-bold text-sm text-black">
+                            <p className="font-bold text-sm text-black mt-2">
                               {product.title}
                             </p>
                             <p className="text-slate-400 text-xs">

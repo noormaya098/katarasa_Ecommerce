@@ -87,19 +87,70 @@ function Cupon() {
     <div className="mx-auto">
       <div className="text-black mx-auto justify-center flex px-5 md:px-20 py-2 mt-5">
         {/* Layar Besar */}
-        <div className="hidden md:inline lg:inline">
-          <div className="ml-2">
+        <div className="hidden md:inline lg:inline bg-[#F7FFF1] h-[220px]">
+          <div className="ml-4 mt-5 ">
             <p>
               Makin <span className="text-[#3B8F51]"> discount</span> dengan
               kupon!
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div
+            className="flex overflow-auto w-[75rem] ml-4 "
+            style={{ maxWidth: "100%" }}
+          >
             {promos.map((promo, index) => (
               <div
                 key={index}
                 className="justify-start mt-2"
-                style={{ position: "relative" }}
+                style={{
+                  position: "relative",
+                  flex: "0 0 auto",
+                  marginRight: "10px",
+                }}
+              >
+                <img
+                  src={promo.image}
+                  className="w-full md:w-[240px] h-[110px]"
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    left: "15px",
+                    color: "white",
+                  }}
+                >
+                  <p className="text-base font-medium mt-2">{promo.title}</p>
+                  <p className="text-sm">{promo.discount}</p>
+                  <p className="text-sm mt-2">{promo.date}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="ml-5 mr-2 mt-0 flex justify-end text-[#7da286]">
+            <p className="cursor-pointer">
+            *klik untuk copy kode
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Layar HP */}
+      <div className="mx-auto justify-center flex px-6 py-2">
+        <div className="md:hidden lg:hidden ">
+          <p className="font-medium text-lg ">
+            Makin <span className="text-[#3B8F51]">discount</span> dengan kupon!
+          </p>
+          <div className="flex overflow-auto" style={{ maxWidth: "100%" }}>
+            {promos.map((promo, index) => (
+              <div
+                key={index}
+                className="justify-start mt-2"
+                style={{
+                  position: "relative",
+                  flex: "0 0 auto",
+                  marginRight: "10px",
+                }}
               >
                 <img
                   src={promo.image}
@@ -113,52 +164,15 @@ function Cupon() {
                     color: "white",
                   }}
                 >
-                  <p>{promo.title}</p>
-                  <p className="text-sm">{promo.discount}</p>
-                  <p className="text-xs mt-2">{promo.date}</p>
+                  <p className="text-xs font-medium mt-2">{promo.title}</p>
+                  <p className="text-[10px]">{promo.discount}</p>
+                  <p className="text-[10px] mt-2">{promo.date}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-
-      {/* Layar HP */}
-      <div className="mx-auto justify-center flex px-6 py-2">
-      <div className="md:hidden lg:hidden ">
-        <p className="font-medium text-lg ">
-          Makin <span className="text-[#3B8F51]">discount</span> dengan kupon!
-        </p>
-        <div className="flex overflow-auto" style={{ maxWidth: "100%" }}>
-          {promos.map((promo, index) => (
-            <div
-              key={index}
-              className="justify-start mt-2"
-              style={{
-                position: "relative",
-                flex: "0 0 auto",
-                marginRight: "10px",
-              }}
-            >
-              <img src={promo.image} className="w-full md:w-[240px] h-[95px]" />
-              <div
-                style={{
-                  position: "absolute",
-                  top: "10px",
-                  left: "15px",
-                  color: "white",
-                }}
-              >
-                <p className="text-xs font-medium mt-2">{promo.title}</p>
-                <p className="text-[10px]">{promo.discount}</p>
-                <p className="text-[10px] mt-2">{promo.date}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      </div>
-     
     </div>
   );
 }

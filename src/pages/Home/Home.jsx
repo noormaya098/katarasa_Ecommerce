@@ -14,7 +14,7 @@ import OurPartner from "./OurPartner";
 
 function Home() {
   return (
-    <div>
+    <div className="w-screen">
       <Navbar />
       <Banner />
       <Carousel />
@@ -31,7 +31,7 @@ function Home() {
         <ChocolateSection />
       </div>
       <OurPartner/>
-      <Footer />
+      <Footer/>
     </div>
   );
 }

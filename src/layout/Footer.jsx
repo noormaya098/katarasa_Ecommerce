@@ -30,9 +30,9 @@ function Footer() {
 
   return (
     <footer className=" mt-10">
-      <div className="w-full mx-auto" style={footerStyle}>
-        <div className="flex flex-wrap justify-start md:justify-center p-14 text-white">
-          <div className="w-full sm:w-1/6 mb-4 sm:mb-0  ">
+      <div className="w-screen mx-auto" style={footerStyle}>
+        <div className="flex flex-wrap justify-start sm:justify-center mx-auto  sm:w-[85rem] p-14 text-white">
+          <div className="w-screen sm:w-1/6 mb-4 sm:mb-0  ">
             {" "}
             {/* Tambahkan kelas order-last dan sm:order-first */}
             <img
@@ -119,20 +119,20 @@ function Footer() {
           <div className="w-full sm:w-1/6 md:mb-4 mb-10  justify-between">
             <p className="font-semibold">Download App</p>
             <div>
-            <div className="mt-2 cursor-pointer">
-              <img
-                src={GP}
-                className="w-32 md:w-48 lg:w-64 h-auto"
-                alt="Google Play"
-              />
-            </div>
-            <div className="mt-2 cursor-pointer">
-              <img
-                src={APS}
-                className="w-32 md:w-48 lg:w-64 h-auto"
-                alt="App Store"
-              />
-            </div>
+              <div className="mt-2 cursor-pointer">
+                <img
+                  src={GP}
+                  className="w-32 md:w-48 lg:w-64 h-auto"
+                  alt="Google Play"
+                />
+              </div>
+              <div className="mt-2 cursor-pointer">
+                <img
+                  src={APS}
+                  className="w-32 md:w-48 lg:w-64 h-auto"
+                  alt="App Store"
+                />
+              </div>
             </div>
           </div>
         </div>

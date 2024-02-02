@@ -51,7 +51,7 @@ function Banner() {
           autoplay
           dots={false}
           arrows={false}
-          className=" md:pt-20 md:pl-20 md:pr-20 md:pb-10 mt-14 rounded-full  "
+          className=" md:pt-20 mt-5 mx-auto flex w-[75rem]   rounded-full  "
         >
           <div className="flex justify-center">
             <img
@@ -75,39 +75,42 @@ function Banner() {
             />
           </div>
         </Carousel>
-        
       </div>
 
       {/* layar hp */}
-      <div className="lg:hidden md:hidden ">
-        <Carousel
-          autoplay
-          dots={false}
-          arrows={false}
-          className="mx-auto justify-center flex px-5 py-2 mt-20"
-        >
-          <div className="flex justify-center rounded-md ">
-            <img
-              className="w-full object-cover rounded-md md:object-fill"
-              src={Banner1}
-              alt="Banner 1"
-            />
-          </div>
-          <div className="flex justify-center rounded-md">
-            <img
-              className="w-full object-cover rounded-md md:object-fill"
-              src={Banner1}
-              alt="Banner 2"
-            />
-          </div>
-          <div className="flex justify-center rounded-md">
-            <img
-              className="w-full object-cover rounded-md md:object-fill"
-              src={Banner1}
-              alt="Banner 3"
-            />
-          </div>
-        </Carousel>
+      <div>
+      <div className="sm:inline lg:hidden md:hidden sm:w-screen w-screen mx-auto justify-start px-4 py-2 ">
+        <div className="mt-28 text-black">
+          <Carousel
+            autoplay
+            dots={false}
+            arrows={false}
+            className="mx-auto justify-center flex px-5 py-2"
+          >
+            <div className="flex justify-center rounded-md ">
+              <img
+                className="w-full object-cover rounded-md md:object-fill"
+                src={Banner1}
+                alt="Banner 1"
+              />
+            </div>
+            <div className="flex justify-center rounded-md">
+              <img
+                className="w-full object-cover rounded-md md:object-fill"
+                src={Banner1}
+                alt="Banner 2"
+              />
+            </div>
+            <div className="flex justify-center rounded-md">
+              <img
+                className="w-full object-cover rounded-md md:object-fill"
+                src={Banner1}
+                alt="Banner 3"
+              />
+            </div>
+          </Carousel>
+        </div>
+      </div>
       </div>
     </>
   );

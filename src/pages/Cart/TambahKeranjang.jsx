@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../../layout/Navbar";
 import Footer from "../../layout/Footer";
-import { Button, Input, Radio } from "antd";
+import { Button, Input, Radio, Tag } from "antd";
 import produk1 from "../../assets/ProductCoffeeBeans/product coffee beans-2.png";
 import produk2 from "../../assets/ProductCoffeeBeans/product coffee beans-1.png";
 import produk3 from "../../assets/ProductCoffeeBeans/product coffee beans-3.png";
@@ -147,112 +147,126 @@ function TambahKeranjang() {
   };
 
   return (
-    <div>
+    <div className="w-screen h-screen">
       <Navbar />
 
       {/* Layar Besar */}
       <>
-        <div className="hidden md:inline lg:inline">
-          <div className="mt-14 md:p-20 w-full mx-auto">
-            <h1 className="text-3xl font-medium text-[#3B8F51]">
-              Keranjang Anda
-            </h1>
-            <div className="flex flex-col md:flex-row mt-5">
-              {/* Konten 1 */}
-              <>
-                <div className="w-full md:w-2/3">
-                  {items.map((item) => (
-                    <div key={item.id} className="w-full p-4">
-                      <div className="flex items-center">
-                        <input
-                          value={item.id}
-                          type="radio"
-                          className="form-radio text-green-500"
-                        />
-                        <div className="w-1/3">
-                          <img
-                            src={item.image}
-                            className="w-28 h-24 ml-5 rounded-md"
-                            alt="Coffee Beans"
-                          />
-                        </div>
-                        <div className="w-2/3 ml-6">
-                          <div className="ml-2">
-                            <p className="text-base font-medium">{item.name}</p>
-                            <p className="text-[#41644A] mt-2 text-sm font-medium">
-                              {item.description}
-                            </p>
-                            <div className="flex items-center mt-3">
-                              <button
-                                onClick={() => handleDecreaseQuantity(item.id)}
-                                className={`px-2 py-0 rounded-full mr-2 ${
-                                  item.quantity > 0
-                                    ? "bg-[#3B8F51] text-white"
-                                    : "bg-gray-300"
-                                }`}
-                              >
-                                -
-                              </button>
-                              <p className="text-[#3B8F51]">{item.quantity}</p>
-                              <button
-                                onClick={() => handleIncreaseQuantity(item.id)}
-                                className={`px-2 py-0 rounded-full ml-2 ${
-                                  item.quantity > 0
-                                    ? "bg-[#3B8F51] text-white"
-                                    : "bg-gray-300"
-                                }`}
-                              >
-                                +
-                              </button>
-                              <span className="ml-6 text-[#3B8F51] font-semibold">
-                                Rp {item.harga}
-                              </span>
+        <div>
+          <div className="hidden md:inline lg:inline">
+            <div className="flex flex-col md:flex-row md:justify-between h-auto w-screen md:p-20 space-x-5  mx-auto sm:w-[85rem] ">
+              <div className="mt-20 mx-auto w-screen h-auto space-x-5 ">
+                <h1 className="text-3xl font-medium text-[#3B8F51]">
+                  Keranjang Anda
+                </h1>
+                <div className="flex w-full mt-5 ">
+                  {/* Konten 1 */}
+                  <>
+                    <div className="w-full">
+                      {items.map((item) => (
+                        <div key={item.id} className="w-full p-4">
+                          <div className="flex items-center">
+                            <input
+                              value={item.id}
+                              type="radio"
+                              className="form-radio text-green-500"
+                            />
+                            <div className="w-1/3 flex justify-center items-center">
+                              <img
+                                src={item.image}
+                                className="w-28 h-24 ml-5 rounded-md"
+                                alt="Coffee Beans"
+                              />
+                            </div>
+                            <div className="w-1/2 ml-6">
+                              <div className="ml-2">
+                                <p className="text-base font-medium">
+                                  {item.name}
+                                </p>
+                                <p className="text-[#41644A] mt-2 text-sm font-medium">
+                                  <Tag color="#3B8F51">
+                                  {item.description}
+                                  </Tag>
+                                </p>
+                                <div className="flex items-center mt-3">
+                                  <button
+                                    onClick={() =>
+                                      handleDecreaseQuantity(item.id)
+                                    }
+                                    className={`px-2 py-0 rounded-full mr-2 ${
+                                      item.quantity > 0
+                                        ? "bg-[#3B8F51] text-white"
+                                        : "bg-gray-300"
+                                    }`}
+                                  >
+                                    -
+                                  </button>
+                                  <p className="text-[#3B8F51]">
+                                    {item.quantity}
+                                  </p>
+                                  <button
+                                    onClick={() =>
+                                      handleIncreaseQuantity(item.id)
+                                    }
+                                    className={`px-2 py-0 rounded-full ml-2 ${
+                                      item.quantity > 0
+                                        ? "bg-[#3B8F51] text-white"
+                                        : "bg-gray-300"
+                                    }`}
+                                  >
+                                    +
+                                  </button>
+                                  <span className="ml-6 text-[#3B8F51] font-semibold">
+                                    Rp {item.harga}
+                                  </span>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
+                      ))}
+                    </div>
+                  </>
+                  {/* Konten 2 */}
+                  <>
+                    <div className="w-1/2 p-4 h-[450px] bg-white  rounded-lg shadow-xl">
+                      <h1 className="text-2xl font-medium mb-5 text-[#3B8F51]">
+                        Detail Pesanan
+                      </h1>
+                      {orderDetails.map((order, index) => (
+                        <div className="flex justify-between mb-4" key={index}>
+                          <div className="w-[230px]">
+                            <p className="truncate text-lg">{order.name}</p>
+                            <p className="text-gray-400">{order.quantity}</p>
+                          </div>
+                          <div className="w-1/4 text-[#3B8F51] text-end mt-5">
+                            {order.price}
+                          </div>
+                        </div>
+                      ))}
+                      <div className="flex justify-between mb-4">
+                        <div className="w-1/2">
+                          <p className="text-lg font-medium">Total Pesanan</p>
+                          <p className="text-gray-400">
+                            Item x {orderDetails.length}
+                          </p>
+                        </div>
+                        <div className="w-1/4 text-[#3B8F51] text-center mt-5 text-xl font-medium">
+                          Rp {totalPrice.toLocaleString()}
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </>
-              {/* Konten 2 */}
-              <>
-                <div className="w-full md:w-1/3 p-4 h-auto rounded-lg shadow-xl">
-                  <h1 className="text-2xl font-medium mb-5 text-[#3B8F51]">
-                    Detail Pesanan
-                  </h1>
-                  {orderDetails.map((order, index) => (
-                    <div className="flex justify-between mb-4" key={index}>
-                      <div className="w-[230px]">
-                        <p className="truncate text-lg">{order.name}</p>
-                        <p className="text-gray-400">{order.quantity}</p>
-                      </div>
-                      <div className="w-1/4 text-[#3B8F51] text-end mt-5">
-                        {order.price}
-                      </div>
-                    </div>
-                  ))}
-                  <div className="flex justify-between mb-4">
-                    <div className="w-1/2">
-                      <p className="text-lg font-medium">Total Pesanan</p>
-                      <p className="text-gray-400">
-                        Item x {orderDetails.length}
-                      </p>
-                    </div>
-                    <div className="w-1/4 text-[#3B8F51] text-center mt-5 text-xl font-medium">
-                      Rp {totalPrice.toLocaleString()}
-                    </div>
-                  </div>
-                  <Input
-                    placeholder="Silahkan Masukkan Voucher"
-                    className="w-full h-14 mt-3 border border-[#3B8F51] placeholder-[#41644A] font-normal text-base"
-                  />
+                      <Input
+                        placeholder="Silahkan Masukkan Voucher"
+                        className="w-full h-14 mt-3 border border-[#3B8F51] placeholder-[#41644A] font-normal text-base"
+                      />
 
-                  <button className="bg-[#3B8F51] text-white py-2 px-4 rounded-full mt-8 w-full hover:bg-[#41644A]">
-                    <Link to="/payment">Bayar Sekarang</Link>
-                  </button>
+                      <button className="bg-[#3B8F51] text-white py-2 px-4 rounded-full mt-8 w-full hover:bg-[#41644A]">
+                        <Link to="/payment">Bayar Sekarang</Link>
+                      </button>
+                    </div>
+                  </>
                 </div>
-              </>
+              </div>
             </div>
           </div>
         </div>
@@ -260,10 +274,12 @@ function TambahKeranjang() {
 
       {/* Layar HP */}
       <>
-        <div className="md:hidden lg:hidden mt-14 p-5 w-full mx-auto">
-          <h1 className="text-[#3B8F51] text-lg font-medium">Your Chart</h1>
+      <div className="sm:inline lg:hidden md:hidden sm:w-screen w-screen mx-auto justify-start px-4 py-2 ">
+     
+        <div className="  mt-24 text-black">
+           <h1 className="text-[#3B8F51] text-lg font-medium">Your Chart</h1>
           <br />
-          
+
           <>
             <div>
               <div className="w-full md:w-2/3">
@@ -340,6 +356,7 @@ function TambahKeranjang() {
             </div>
           </>
         </div>
+        </div>
       </>
 
       <div className=" md:hidden lg:hidden">
@@ -350,11 +367,11 @@ function TambahKeranjang() {
                 <p className="text-[#F7FFF1] text-xs">Total</p>Rp 30.000
               </div>
               <div className="w-1/2  ">
-               <Link to="/payment">
-               <Button className="bg-white rounded-full text-[#3B8F51] w-full text-xs h-full">
-                  Selanjutnya
-                </Button>
-               </Link>
+                <Link to="/payment">
+                  <Button className="bg-white rounded-full text-[#3B8F51] w-full text-xs h-full">
+                    Selanjutnya
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
