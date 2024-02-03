@@ -344,7 +344,7 @@ function Pencarian() {
       {/* Layar HP */}
       <>
         <div className="sm:inline lg:hidden md:hidden sm:w-full mx-auto justify-start px-4 py-2">
-          <div className=" flex  mt-20 text-black ">
+          <div className=" flex  mt-28 text-black ">
             {/* Filter */}
             <>
               <div className="w-full mt-1">
