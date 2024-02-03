@@ -183,13 +183,13 @@ function Pencarian() {
   };
 
   return (
-    <div>
+    <div className=" w-screen h-screen">
       <Navbar />
 
       {/* Layar Besar */}
       <>
         <div className="hidden md:inline">
-          <div className=" mx-auto justify-center flex px-4 sm:px-8 md:px-16 py-2 mt-32 sm:mt-20 lg:mt-10 p-4 text-black">
+          <div className=" flex flex-col md:flex-row md:justify-between h-auto w-screen md:p-20 space-x-5  mx-auto sm:w-[85rem]">
             <div className="flex flex-col sm:flex-row mt-24">
               {/* Konten sebelah kiri - Pencarian */}
 
