@@ -212,14 +212,14 @@ function Navbar() {
           {/* Tampilkan tab pada layar besar */}
           <div className="hidden md:flex md:space-x-6">
             <a
-              className="text-white hover:text-white rounded-full px-4 py-2  hover:bg-[#3B8F51] hover:border-none"
+              className="text-white hover:text-white rounded-full px-4 py-3  hover:bg-[#3B8F51] hover:border-none"
               style={{ fontFamily: "Special Elite, sans-serif" }}
             >
               <Link to="/menu">Home</Link>
             </a>
             <a
               href="#promo"
-              className="text-white hover:text-white rounded-full px-4 py-2 hover:bg-[#3B8F51] hover:border-none"
+              className="text-white hover:text-white rounded-full px-4 py-3 hover:bg-[#3B8F51] hover:border-none"
             >
               Promo
             </a>
