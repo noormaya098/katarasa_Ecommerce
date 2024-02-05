@@ -29,6 +29,18 @@ function Navbar() {
   const [modalVisible, setModalVisible] = useState(false);
   const [visibleSignIn, setVisibleSignIn] = useState(false);
 
+  const [visibleOTP, setVisibleOTP] = useState(false);
+  const [OTP, setOTP] = useState("");
+
+  const handleOkOTP = () => {
+    // Logic to handle OTP verification
+    setVisible(false);
+  };
+
+  const handleCancelOTP = () => {
+    setVisible(false);
+  };
+
   const menu = (
     <Menu className="w-36">
       <br />
@@ -82,6 +94,7 @@ function Navbar() {
     </Menu>
   );
 
+  
   const showModalSignIn = () => {
     setVisibleSignIn(true);
   };
@@ -90,25 +103,7 @@ function Navbar() {
     setVisibleSignIn(false);
   };
 
-  const handleSignIn = () => {
-    // Handle sign in logic here
-    setVisibleSignIn(false);
-  };
-
-  const handleMenuClick = (e) => {
-    if (e.key === "menu") {
-      setIsMenuOpen(!isMenuOpen);
-    }
-  };
-
-  const handleLoginClick = () => {
-    setModalVisible(true);
-  };
-
-  const handleModalCancel = () => {
-    setModalVisible(false);
-  };
-
+ 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -147,15 +142,9 @@ function Navbar() {
     setIsMenuOpen(false);
   };
 
-  const handleSignInClick = () => {
-    setModalVisible(false);
-    setVisibleSignIn(true);
-  };
+  
 
-  const handleSignUpClick = () => {
-    setVisibleSignIn(false);
-    setModalVisible(true);
-  };
+ 
 
   return (
     <div className="flex mx-auto bg-red-700 sm:w-full w-screen fixed z-[10]">
@@ -197,7 +186,6 @@ function Navbar() {
             </div>
           </>
           <div className="mr-14 ">
-            
             {/* Logo */}
             <Link to="/home">
               {" "}
@@ -460,7 +448,8 @@ function Navbar() {
               </div>
               <Button
                 className="mt-6 mb-8 justify-center w-full h-[50px] rounded-full bg-[#3B8F51] text-white hover:bg-transparent hover:border-green-500 hover:text-green-500"
-                onClick={handleLogin}
+                // onClick={handleLogin}
+                onClick={() => setVisibleOTP(true)}
               >
                 Daftar
               </Button>
@@ -495,6 +484,18 @@ function Navbar() {
                   Eureka Log In
                 </Button>
               </div>
+            </Modal>
+          </>
+
+          {/* Modal OTP */}
+          <>
+            <Modal
+              title="Enter OTP"
+              visible={visibleOTP}
+              onOk={handleOkOTP}
+              onCancel={handleCancelOTP}
+            >
+              <div className="flex justify-between">haha</div>
             </Modal>
           </>
         </div>
