@@ -89,6 +89,33 @@ function TambahKeranjang() {
       harga: "24.000",
       category: "tea",
     },
+    {
+      id: 6,
+      image: Tea,
+      quantity: 0,
+      name: "Teh Dewi - Jasmin Tea",
+      description: "500gr, Exclude, Plastics",
+      harga: "24.000",
+      category: "tea",
+    },
+    {
+      id: 7,
+      image: Tea,
+      quantity: 0,
+      name: "Teh Dewi - Jasmin Tea",
+      description: "500gr, Exclude, Plastics",
+      harga: "24.000",
+      category: "tea",
+    },
+    {
+      id: 7,
+      image: Tea,
+      quantity: 0,
+      name: "Teh Dewi - Jasmin Tea",
+      description: "500gr, Exclude, Plastics",
+      harga: "24.000",
+      category: "tea",
+    },
   ]);
 
   const handleDecreaseQuantity = (id) => {
@@ -281,7 +308,7 @@ function TambahKeranjang() {
           <br />
 
           <>
-            <div>
+            <div className=" h-[43rem] overflow-auto">
               <div className="w-full md:w-2/3">
                 {items.map((item, index) => (
                   <React.Fragment key={item.id}>
@@ -378,7 +405,7 @@ function TambahKeranjang() {
         </footer>
       </div>
 
-      <div className="hidden md:inline lg:inline">
+      <div className="hidden md:inline lg:inline mt-0">
         <Footer />
       </div>
     </div>
