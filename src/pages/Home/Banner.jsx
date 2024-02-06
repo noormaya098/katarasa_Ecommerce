@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import Banner1 from "../../assets/Katarasa/Banner1.png";
+import Banner1 from "../../assets/Katarasa/BannerDefault.png";
+import Banner2 from "../../assets/Katarasa/BannerImlek.png";
 import { Carousel } from "antd";
 import axios from "axios";
 import Baseurl from "../../Api/BaseUrl";
@@ -56,7 +57,7 @@ function Banner() {
           <div className="flex justify-center">
             <img
               className="w-full object-cover md:object-fill"
-              src={Banner1}
+              src={Banner2}
               alt="Banner 1"
             />
           </div>
@@ -90,7 +91,7 @@ function Banner() {
             <div className="flex justify-center rounded-md ">
               <img
                 className="w-full object-cover rounded-md md:object-fill"
-                src={Banner1}
+                src={Banner2}
                 alt="Banner 1"
               />
             </div>

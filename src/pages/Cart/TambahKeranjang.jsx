@@ -7,7 +7,7 @@ import produk2 from "../../assets/ProductCoffeeBeans/product coffee beans-1.png"
 import produk3 from "../../assets/ProductCoffeeBeans/product coffee beans-3.png";
 import Tea from "../../assets/ProductTea/Tea.png";
 import { Link } from "react-router-dom";
-import Footer_Pembayaran from "../../layout/Footer_Pembayaran";
+
 
 function TambahKeranjang() {
   const [quantity, setQuantity] = useState(0);
