@@ -212,13 +212,13 @@ const Carousel = () => {
                           <Link to="/detailproduct">
                             <div
                               ref={carousel}
-                              className="carousel-container  relative flex gap-2 overflow-auto scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
+                              className="carousel-container   relative flex gap-2 overflow-auto scroll-smooth snap-x snap-mandatory touch-pan-x z-0"
                             >
                               {products.map((product, index) => {
                                 return (
                                   <div
                                     key={index}
-                                    className="carousel-item rounded-lg relative snap-start shadow-2xl md:w-[200px] md:h-[300px] mt-2 bg-white"
+                                    className="carousel-item rounded-lg relative snap-start shadow-2xl md:w-[200px] sm:h-[300px] mt-2 bg-white"
                                   >
                                     <a
                                       href={product.link}
