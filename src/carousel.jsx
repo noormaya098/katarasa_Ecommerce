@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import katarasaLogo from "../src/assets/katarasaLogo.png";
 import PestaDisc from "./assets/PestaDiscount.png";
 import ProductCoffee from "./assets/ProductCoffeeBeans/product coffee beans-2.png";
 import ProductChocoBar1 from "./assets/ChocoBar/productChocobar2.png";
@@ -231,7 +230,6 @@ const Carousel = () => {
                                       />
                                       <div className="ml-2">
                                         <p className="font-bold text-sm mt-2">
-
                                           {product.title}
                                         </p>
                                         <p className="text-slate-400 text-xs">

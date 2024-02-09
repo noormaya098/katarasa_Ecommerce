@@ -14,7 +14,7 @@ import OurPartner from "./OurPartner";
 
 function Home() {
   return (
-    <div className="w-screen">
+    <div >
       <Navbar />
       <Banner />
       <Carousel />

@@ -201,7 +201,7 @@ function Navbar() {
   };
 
   return (
-    <div className="flex mx-auto bg-red-700 sm:w-full w-screen fixed z-[10]">
+    <div className="flex mx-auto bg-red-700 sm:w-screen w-screen  fixed z-[10]">
       <nav className="  shadow-lg sm:w-full w-screen flex top-0 bg-[#41644A] pt-5 pb-5  justify-center items-center  ">
         <div className="flex items-center ">
           {/* Search Layar HP */}
