@@ -47,7 +47,7 @@ function About() {
     <div className="w-screen h-screen  ">
       <Navbar />
       {/* Layar Besar */}
-      <div className="">
+      <div>
         <div className="hidden sm:inline lg:inline ">
           <div className="flex flex-col sm:flex-row md:justify-between h-screen w-screen  space-x-5  mx-auto ">
             <div className=" mt-20 mx-auto w-screen  h-auto  ">
@@ -60,7 +60,7 @@ function About() {
                   }}
                 >
                   {/* Konten Anda di sini */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#41644A] to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#41644A] to-transparent h-[100%]"></div>
                   <div className="z-0 text-center relative">
                     <h1 className="text-8xl font-bold relative">
                       <span
@@ -139,14 +139,14 @@ function About() {
                           <img
                             src={Kiri}
                             alt=""
-                            className="w-[35rem] h-[35rem]"
+                            className="w-[283px] h-[498px]"
                           />
                         </div>
                         <div className="absolute top-1/2 right-0 transform translate-y-[39rem]">
                           <img
                             src={Kanan}
                             alt=""
-                            className="w-[15rem] h-[25rem]"
+                            className="w-[345px] h-[400px]"
                           />
                         </div>
                       </div>
@@ -256,6 +256,187 @@ function About() {
                     </div>
                   </>
                 </div>
+              </>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Layar Kecil */}
+
+      <div>
+        <div className="sm:inline lg:hidden md:hidden sm:w-screen w-screen mx-auto justify-start px-0 py-2 ">
+          <div className=" mt-20 mx-auto w-screen  h-auto  ">
+            <>
+              <div className="bg-[#41644A]">
+                <div
+                  className="w-full h-[233px] p-4  md:mb-0 relative text-white flex justify-center items-center"
+                  style={{
+                    backgroundImage: `url(${BackgroundAbout})`,
+                    backgroundSize: "cover", // Menentukan lebar gambar latar belakang
+                  }}
+                >
+                  {/* Konten Anda di sini */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#41644A] to-transparent h-[102%]"></div>
+                  <div className="z-0 text-center relative">
+                    <h1 className="text-2xl font-semibold relative">
+                      <span
+                        className="text-transparent"
+                        style={{
+                          WebkitTextStroke: "1px white",
+                        }}
+                      >
+                        About Kata Rasa
+                      </span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </>
+            <div className="bg-[#41644A] h-[600px] relative mt-0">
+              <div>
+                <div className="w-full">
+                  <div className="p-14 text-white">
+                    <p className="text-2xl  font-semibold">
+                      Secangkir Kata, Penuh Rasa.
+                    </p>
+                    <p className="mt-10 text-[11px] text-[#EAE9E9]">
+                      Kata & Rasa Hadir dalam konsep kedai kopi dan teh,
+                      secangkir kafein mampu membangkitkan inspirasi, memori dan
+                      daya kreasi anda.
+                    </p>
+                    <p className="mt-5 text-[11px] text-[#EAE9E9]">
+                      Kata & Rasa menjadi tempat bagi pengunjungnya untuk
+                      mengembangkan imajinasi kreatif yang menghasilkan narasi,
+                      puisi bahkan gambar yang mengandung banyak makna.
+                    </p>
+                    <p className="mt-5 text-[11px] text-[#EAE9E9]">
+                      Dalam Kata & Rasa, Kami merangkul terciptanya segala
+                      ekspresi komunikasi yang mampu mengalihkan ide-ide inovasi
+                      bagi penikmatnya.
+                    </p>
+                  </div>
+                </div>
+                <div className="absolute top-52 transform w-full h-full flex justify-center items-center ">
+                  <img
+                    src={Gambar1}
+                    alt=""
+                    className="w-[320px] h-[328px] self-start mt-36 rounded-se-[50%]"
+                  />
+                  <div className="absolute top-[9rem] left-[20rem]">
+                    <img src={Star1} alt="" className="w-[38px] h-[37px]" />
+                  </div>
+                  <div className="absolute top-[10rem] left-[22rem]">
+                    <img
+                      src={Star2}
+                      alt=""
+                      className="w-[19px] h-[18px] mt-4"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#FFF3E9] ">
+              <div className="w-full mb-20">
+                <div className="p-14 text-[#41644A]">
+                  <p className="text-2xl mt-20  font-semibold">
+                    Sedia Kata untuk kesatuan Rasa.
+                  </p>
+                  <p className="mt-10 text-[11px]">
+                    Kata & Rasa tersaji sebagai bagian dari komunitas pecinta
+                    kopi yang akan terus menghargai, mengedukasi, dan
+                    mengeksplorasi kenikmatan dari sajian kopi, sebagai bagian
+                    dari komoditas nusantara dan budaya dunia.
+                  </p>
+                  <p className="mt-5 text-[11px]">
+                    Kata & Rasa menyajikan serangkaian menu kopi pilihan. Salah
+                    satu menu inovatif kami adalah Tekopresso, paduan kuatnya
+                    kafein dengan harumnya seduhan daun teh.
+                  </p>
+                  <p className="mt-5 text-[11px]">
+                    Kata & Rasa juga menghadirkan ragam varian kue pastry
+                    sebagai teman minum kopi anda, seperti Croissant, Danish dan
+                    Cromboloni.
+                  </p>
+                </div>
+                <div className="relative">
+                  <div className="absolute  left-0 transform">
+                    <img src={Kiri} alt="" className="w-[112px] h-[198px]" />
+                  </div>
+                  <div className="absolute  right-0 transform translate-y-[22rem]">
+                    <img src={Kanan} alt="" className="w-[140px] h-[140px]" />
+                  </div>
+
+                  <div className="absolute  right-10 transform translate-y-[19rem] z-20">
+                    <img src={Star1} alt="" className="w-[41px] h-[42px]" />
+                  </div>
+                  <div className="absolute  right-16 transform translate-y-[20rem] z-20">
+                    <img
+                      src={Star2}
+                      alt=""
+                      className="w-[20px] h-[21px] mt-4"
+                    />
+                  </div>
+                </div>
+                <div className="justify-center items-center flex">
+                  <img
+                    src={Gambar2}
+                    alt=""
+                    className="w-[320px] h-[328px] self-start z-10 rounded-ss-[40%]"
+                  />
+                </div>
+              </div>
+
+              {/* locations */}
+              <>
+                <div className=" mx-auto ">
+                  <h1 className="font-semibold text-lg pl-10">
+                    Store Locations
+                  </h1>
+                </div>
+
+                <div className="mx-auto mt-5 pl-10 pr-10">
+                  <div>
+                    {images.map((image, index) => (
+                      <div key={index} className="w-full">
+                        <div className="bg-white rounded-lg shadow-md mb-10">
+                          <img src={image.src} alt="" className="h-[150px]" />
+                          <div className="w-full  p-5">
+                            <div className="w-full">
+                              <h1 className="text-[22px] font-medium">
+                                {image.title}
+                              </h1>
+                              <p className="text-[14px] font-normal text-gray-400">
+                                {image.address}
+                              </p>
+                            </div>
+                            <div className="flex justify-between">
+                             <div className="w-1/2 flex mt-2">
+                             <img
+                                src={sendok}
+                                alt="Logo 1"
+                                className="h-[50px]"
+                              />
+                              <img
+                                src={shoppee}
+                                alt="Logo 2"
+                                className="h-[50px]"
+                              />
+                              <img
+                                src={grab}
+                                alt="Logo 3"
+                                className="h-[50px]"
+                              />
+                             </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <Footer />
               </>
             </div>
           </div>

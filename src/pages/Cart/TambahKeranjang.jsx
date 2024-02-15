@@ -189,7 +189,7 @@ function TambahKeranjang() {
                 <div className="flex w-full mt-5 ">
                   {/* Konten 1 */}
                   <>
-                    <div className="w-full">
+                    <div className="w-full h-[30rem] overflow-auto">
                       {items.map((item) => (
                         <div key={item.id} className="w-full p-4">
                           <div className="flex items-center">
